@@ -1,0 +1,22 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.tar.xz
+
+# Test binary, built with `go test -c`
+*.test
+testdata
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+authenticator-desktop
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# secrets
+*.pem
+!dummy_secret.pem

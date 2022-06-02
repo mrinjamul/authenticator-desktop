@@ -1,18 +1,21 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
+	"github.com/mrinjamul/authenticator-desktop/config"
+	"github.com/mrinjamul/authenticator-desktop/pages/pager"
 
-	"github.com/mrinjamul/authenticator-cli/utils"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
 )
 
 func main() {
-	//Read the secret token from file system
-	data, err := ioutil.ReadFile("secret.pem")
-	utils.PanicIf(err)
-	secret := string(data)
-	otp := utils.GetTOTPToken(secret)
-	fmt.Println(otp)
-	utils.CopyToClipboard(otp)
+	app := app.New()
+	window := app.NewWindow("Authenticator Desktop")
+
+	window.Resize(fyne.NewSize(400, 400))
+	config := config.Initialize(window)
+	pager := pager.Init(config)
+	pager.Start()
+
+	window.ShowAndRun()
 }

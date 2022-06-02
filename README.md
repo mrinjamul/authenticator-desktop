@@ -1,4 +1,12 @@
-# authenticator-cli
+<div align="center">
+  <h1><code>authenticator-desktop</code></h1>
+  <p>
+    <strong>
+    TOTP Authenticator Desktop is a authenticator app for desktop.
+    </strong>
+  </p>
+</div>
 
-TOTP Authenticator CLI is a command line tool for generating and validating
-TOTP codes.
+### License
+
+- open sourced under MIT license (see [LICENSE](LICENSE.md)) | mrinjamul Copyright © 2021

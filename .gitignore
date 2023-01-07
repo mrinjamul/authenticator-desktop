@@ -20,3 +20,4 @@ authenticator-desktop
 # secrets
 *.pem
 !dummy_secret.pem
+fyne_metadata_init.go

@@ -31,7 +31,7 @@ func (page *secondPage) Render() {
 
 	// create add account form fields
 	nameField := widget.NewEntry()
-	nameField.SetPlaceHolder("John Doe")
+	nameField.SetPlaceHolder("Github")
 	usernameField := widget.NewEntry()
 	usernameField.SetPlaceHolder("john")
 	emailField := widget.NewEntry()
@@ -74,7 +74,7 @@ func (page *secondPage) Render() {
 	// create form container
 	form := container.NewVBox(
 		titleLabelContainer,
-		widget.NewLabel("Name"),
+		widget.NewLabel("Account Name"),
 		nameField,
 		widget.NewLabel("Username"),
 		usernameField,

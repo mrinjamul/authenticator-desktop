@@ -10,6 +10,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/data/binding"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -51,25 +52,35 @@ func (page *launcher) Render() {
 				time.Sleep(time.Second)
 			}
 		}()
-		// item := widget.NewLabelWithStyle(totp, fyne.TextAlignCenter, fyne.TextStyle{Bold: true})
-		item := widget.NewButton("Copy", func() {
-			utils.CopyToClipboardWithBinding(totp)
-		})
+
 		// Create a card with account name, totp code and the button
 		otp := widget.NewLabelWithStyle("", fyne.TextAlignCenter, fyne.TextStyle{Bold: true})
 		otp.Bind(totp)
+
+		// create container for button
+		copyButton := widget.NewButtonWithIcon("Copy", theme.ContentCopyIcon(), func() {
+			utils.CopyToClipboardWithBinding(totp)
+		})
+		editButton := widget.NewButtonWithIcon("Edit", theme.SettingsIcon(), func() {
+			//page.config.Launch()(constants.PAGE_EDIT_ACCOUNT_KEY)
+		})
+		buttons := container.NewHBox(copyButton, editButton)
+		// create buttons on right side
+		buttonsContainer := container.NewCenter(buttons)
+		// create card
 		card := container.NewVBox(
 			widget.NewLabelWithStyle(account.Name+" | "+account.Username, fyne.TextAlignCenter, fyne.TextStyle{Bold: true}),
 			otp,
-			item,
+			buttonsContainer,
 		)
 		items = append(items, card)
 	}
 
 	// Add new account button
-	addAccountButton := widget.NewButton("Add Account", func() {
+	addAccountButton := widget.NewButtonWithIcon("Add Account", theme.ContentAddIcon(), func() {
 		page.config.Launch()(constants.PAGE_ACCOUNT_PAGE_KEY)
 	})
+
 	// create centered container for button
 	addAccountButtonContainer := container.NewCenter(addAccountButton)
 	accountList := container.NewVScroll(container.NewVBox(items...))

@@ -28,6 +28,7 @@ func Init(conf config.Config) Pager {
 	pages := []pages.Page{
 		pages.NewLauncher(conf),
 		pages.NewAddAccountPage(conf),
+		pages.NewEditAccountPage(conf),
 	}
 	return postInitialize(p, pages)
 }

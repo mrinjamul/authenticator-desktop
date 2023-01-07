@@ -14,19 +14,19 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-type secondPage struct {
+type editPage struct {
 	config config.Config
 }
 
-func (page *secondPage) HashCode() string {
-	return constants.PAGE_ACCOUNT_PAGE_KEY
+func (page *editPage) HashCode() string {
+	return constants.PAGE_EDIT_ACCOUNT_KEY
 }
 
-func (page *secondPage) Render() {
+func (page *editPage) Render() {
 	content := []fyne.CanvasObject{}
 
 	// Create Title Label
-	titleLabel := widget.NewLabelWithStyle("Add Account", fyne.TextAlignCenter, fyne.TextStyle{Bold: true})
+	titleLabel := widget.NewLabelWithStyle("Edit Account", fyne.TextAlignCenter, fyne.TextStyle{Bold: true})
 	// Create container for title label
 	titleLabelContainer := container.NewCenter(titleLabel)
 
@@ -93,8 +93,8 @@ func (page *secondPage) Render() {
 	page.config.GetWindow().SetContent(cc)
 }
 
-func NewAddAccountPage(conf config.Config) Page {
-	return &secondPage{
+func NewEditAccountPage(conf config.Config) Page {
+	return &editPage{
 		config: conf,
 	}
 }

@@ -41,7 +41,6 @@ func (page *secondPage) Render() {
 
 	// create add account button
 	addAccountButton := widget.NewButton("Save", func() {
-		log.Println("Form submitted:", nameField.Text, usernameField.Text, emailField.Text, secretField.Text)
 		// check if all fields are filled
 		if nameField.Text == "" || (usernameField.Text == "" && emailField.Text == "") || secretField.Text == "" {
 			log.Println("Form not filled")

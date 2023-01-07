@@ -1,12 +1,15 @@
 package pages
 
 import (
+	"time"
+
 	"github.com/mrinjamul/authenticator-desktop/config"
 	"github.com/mrinjamul/authenticator-desktop/constants"
 	"github.com/mrinjamul/authenticator-desktop/utils"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/data/binding"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -28,16 +31,38 @@ func (page *launcher) Render() {
 		panic(err)
 	}
 
+	// dynamically generate OTP every 30 seconds using data/binding fyne
 	// create account list
 	for _, account := range accounts {
-		var card *widget.Card
 		// var totp string
-		totp := utils.GetTOTPToken(account.Secret)
+		totp := binding.NewString()
+		go func() {
+			// Generate OTP when time second is 00 and 30
+			totp.Set(utils.GetTOTPToken(account.Secret))
+			for {
+				// Get current second
+				second := time.Now().UTC().Second()
+				// If second is 00 or 30 then generate OTP
+				if second == 0 || second == 30 {
+					// Generate OTP
+					totp.Set(utils.GetTOTPToken(account.Secret))
+				}
+				// Wait for 1 second
+				time.Sleep(time.Second)
+			}
+		}()
 		// item := widget.NewLabelWithStyle(totp, fyne.TextAlignCenter, fyne.TextStyle{Bold: true})
 		item := widget.NewButton("Copy", func() {
-			utils.CopyToClipboard(totp)
+			utils.CopyToClipboardWithBinding(totp)
 		})
-		card = widget.NewCard(account.Name+" | "+account.Username, totp, item)
+		// Create a card with account name, totp code and the button
+		otp := widget.NewLabelWithStyle("", fyne.TextAlignCenter, fyne.TextStyle{Bold: true})
+		otp.Bind(totp)
+		card := container.NewVBox(
+			widget.NewLabelWithStyle(account.Name+" | "+account.Username, fyne.TextAlignCenter, fyne.TextStyle{Bold: true}),
+			otp,
+			item,
+		)
 		items = append(items, card)
 	}
 

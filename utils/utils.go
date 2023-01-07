@@ -20,6 +20,7 @@ import (
 	"strings"
 	"time"
 
+	"fyne.io/fyne/v2/data/binding"
 	"github.com/mrinjamul/authenticator-desktop/models"
 	"github.com/rs/xid"
 )
@@ -97,6 +98,20 @@ func CopyToClipboard(text string) {
 	}
 	if runtime.GOOS == "darwin" {
 		copyMac(text)
+	}
+}
+
+// Copy to clipboard function for Linux, Windows, MacOS
+func CopyToClipboardWithBinding(text binding.String) {
+	txt, _ := text.Get()
+	if runtime.GOOS == "windows" {
+		copyWindows(txt)
+	}
+	if runtime.GOOS == "linux" {
+		copyLinux(txt)
+	}
+	if runtime.GOOS == "darwin" {
+		copyMac(txt)
 	}
 }
 

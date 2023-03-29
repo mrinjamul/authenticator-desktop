@@ -3,7 +3,7 @@ module github.com/mrinjamul/authenticator-desktop
 go 1.18
 
 require (
-	fyne.io/fyne/v2 v2.3.2
+	fyne.io/fyne/v2 v2.3.3
 	github.com/rs/xid v1.4.0
 	golang.org/x/crypto v0.7.0
 )

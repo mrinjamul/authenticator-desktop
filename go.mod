@@ -3,14 +3,13 @@ module github.com/mrinjamul/authenticator-desktop
 go 1.18
 
 require (
-	fyne.io/fyne/v2 v2.3.3
+	fyne.io/fyne/v2 v2.3.4
 	github.com/rs/xid v1.5.0
 	golang.org/x/crypto v0.8.0
 )
 
 require (
-	fyne.io/systray v1.10.1-0.20230312215936-7f71b037e260 // indirect
-	github.com/benoitkugler/textlayout v0.3.0 // indirect
+	fyne.io/systray v1.10.1-0.20230403195833-7dc3c09283d6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fredbi/uri v0.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
@@ -19,7 +18,7 @@ require (
 	github.com/fyne-io/image v0.0.0-20220602074514-4956b0afb3d2 // indirect
 	github.com/go-gl/gl v0.0.0-20211210172815-726fda9656d6 // indirect
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20221017161538-93cebf72946b // indirect
-	github.com/go-text/typesetting v0.0.0-20221212183139-1eb938670a1f // indirect
+	github.com/go-text/typesetting v0.0.0-20230405155246-bf9c697c6e16 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/goki/freetype v0.0.0-20220119013949-7a161fd3728c // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
@@ -30,7 +29,7 @@ require (
 	github.com/stretchr/testify v1.8.0 // indirect
 	github.com/tevino/abool v1.2.0 // indirect
 	github.com/yuin/goldmark v1.4.13 // indirect
-	golang.org/x/image v0.0.0-20220601225756-64ec528b34cd // indirect
+	golang.org/x/image v0.3.0 // indirect
 	golang.org/x/mobile v0.0.0-20211207041440-4e6c2922fdee // indirect
 	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/sys v0.7.0 // indirect

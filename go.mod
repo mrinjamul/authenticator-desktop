@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	fyne.io/fyne/v2 v2.4.5
-	github.com/rs/xid v1.5.0
+	github.com/rs/xid v1.6.0
 	golang.org/x/crypto v0.26.0
 )
 
